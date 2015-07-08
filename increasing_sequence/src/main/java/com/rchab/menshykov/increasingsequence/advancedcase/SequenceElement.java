@@ -1,36 +1,70 @@
 package com.rchab.menshykov.increasingsequence.advancedcase;
 
+import javax.swing.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 public class SequenceElement {
     private Integer value;
-    private Integer startIndex;
-    private Integer sortedIndex;
+    private Integer longestSequenceSize;
+    private SequenceElement previousElement;
 
-    public SequenceElement(Integer value, Integer startIndex) {
+    public SequenceElement(Integer value) {
         this.value = value;
-        this.startIndex = startIndex;
     }
 
+    private SequenceElement() {
+    }
+
+    public static SequenceElement createDefaultElement() {
+        SequenceElement element = new SequenceElement();
+        element.setLongestSequenceSize(0);
+        return element;
+    }
 
     public Integer getValue() {
         return value;
     }
 
-    public void setSortedIndex(Integer sortedIndex) {
-        this.sortedIndex = sortedIndex;
+    public Integer getLongestSequenceSize() {
+        return longestSequenceSize;
     }
 
-    public Integer getOffset() {
-        return startIndex - sortedIndex;
+    public void setLongestSequenceSize(Integer longestSequenceSize) {
+        this.longestSequenceSize = longestSequenceSize;
     }
+
+    public SequenceElement getPreviousElement() {
+        return previousElement;
+    }
+
+    public void setPreviousElement(SequenceElement previousElement) {
+        this.previousElement = previousElement;
+    }
+
+    public List<Integer> getIntegerSequent() {
+        List<Integer> integerList = new LinkedList<>();
+        integerList = getPreviousInteger(integerList, this);
+        Collections.reverse(integerList);
+        return integerList;
+    }
+
+    private List<Integer> getPreviousInteger(List<Integer> integerList, SequenceElement element) {
+        if (element != null && element.getValue() != null) {
+            integerList.add(element.getValue());
+            getPreviousInteger(integerList, element.getPreviousElement());
+        }
+        return integerList;
+    }
+
 
     @Override
     public String toString() {
-        int offset = startIndex - sortedIndex;
         return "SequenceElement{" +
                 "value=" + value +
-                ", startIndex=" + startIndex +
-                ", sortedIndex=" + sortedIndex +
-                ", sortedOffset=" + offset +
-                "} \n";
+                ", longestSequenceSize=" + longestSequenceSize +
+                ", previousElement=" + previousElement +
+                '}';
     }
 }

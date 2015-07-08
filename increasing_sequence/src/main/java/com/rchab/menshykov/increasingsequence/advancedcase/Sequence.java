@@ -1,74 +1,52 @@
 package com.rchab.menshykov.increasingsequence.advancedcase;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Sequence {
 
     private List<SequenceElement> elementList;
+    private SequenceElement lastSequenceElement;
 
-    private Sequence filteredList;
-
-    public Sequence(List<SequenceElement> elementList) {
-        this.elementList = elementList;
-    }
-
-    public Sequence(Integer[] array) {
+    public Sequence(List<Integer> inputIntegerList) {
         elementList = new LinkedList<>();
-        int startIndex = 0;
-        for (int startElement : array) {
-            SequenceElement sequenceElement = new SequenceElement(startElement, startIndex);
-            elementList.add(sequenceElement);
-            startIndex++;
+        lastSequenceElement = SequenceElement.createDefaultElement();
+        for (Integer inputElement : inputIntegerList) {
+            SequenceElement element = new SequenceElement(inputElement);
+            SequenceElement previousElementFromLongestSequent = findPreviousElementFromLongestSeqForElementFromList(element, elementList);
+            element.setPreviousElement(previousElementFromLongestSequent);
+            Integer sequenceLength = previousElementFromLongestSequent.getLongestSequenceSize() + 1;
+            element.setLongestSequenceSize(sequenceLength);
+            elementList.add(element);
+            if (sequenceLength > lastSequenceElement.getLongestSequenceSize()) {
+                lastSequenceElement = element;
+            }
         }
     }
 
-    public void sortList() {
-        int length = elementList.size();
-        for (int i = length - 1; i > 1; i--) {
-            for (int j = 0; j < i; j++) {
-                SequenceElement firstElement = elementList.get(j);
-                SequenceElement secondElement = elementList.get(j+1);
-                if (firstElement.getValue() > secondElement.getValue()) {
-                    swap(j + 1, j, secondElement);
+    public SequenceElement findPreviousElementFromLongestSeqForElementFromList(SequenceElement element, List<SequenceElement> elements) {
+        SequenceElement previousElement = SequenceElement.createDefaultElement();
+        for (SequenceElement candidate : elements) {
+            if (element.getValue() >= candidate.getValue()) {
+                if (candidate.getLongestSequenceSize() > previousElement.getLongestSequenceSize()) {
+                    previousElement = candidate;
                 }
             }
         }
-        updateSortedIndex();
+        return previousElement;
     }
 
-    private void swap(int oldPosition, int newPosition, SequenceElement newElement) {
-        elementList.remove(oldPosition);
-        elementList.add(newPosition, newElement);
-    }
-
-    private void updateSortedIndex(){
-        int sortedIndex = 0;
-        for (SequenceElement sequenceElement: elementList){
-            sequenceElement.setSortedIndex(sortedIndex);
-            sortedIndex++;
-        }
-    }
-
-    public Sequence getFilterSequence() {
-        List<SequenceElement> filteredElementList = new ArrayList<>();
-        for(SequenceElement element: elementList){
-            if(element.getOffset() >= 0){
-                filteredElementList.add(element);
-            }
-        }
-        return new Sequence(filteredElementList);
+    public SequenceElement getLastSequenceElement() {
+        return lastSequenceElement;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Element List: \n");
         for(SequenceElement element: elementList) {
-            sb.append(element.toString());
+            sb.append(element.toString() + " \n");
         }
         return sb.toString();
-
     }
 }
 
