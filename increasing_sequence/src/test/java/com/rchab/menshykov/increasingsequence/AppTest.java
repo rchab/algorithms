@@ -14,7 +14,7 @@ public class AppTest {
 
         Integer expectedResult = 4;
 
-        assertEquals(expectedResult, App.getNumberInSequent(previousNumber, currentNumber, previousOrderNumber));
+        assertEquals(expectedResult, App.getOrderOfElementInIncreasingSequence(previousNumber, currentNumber, previousOrderNumber));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class AppTest {
 
         Integer expectedResult = 3;
 
-        assertEquals(expectedResult, App.getNumberInSequent(previousNumber, currentNumber, previousOrderNumber));
+        assertEquals(expectedResult, App.getOrderOfElementInIncreasingSequence(previousNumber, currentNumber, previousOrderNumber));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class AppTest {
 
         Integer expectedResult = App.START_SEQUENT_NUMBER;
 
-        assertEquals(expectedResult, App.getNumberInSequent(previousNumber, currentNumber, previousOrderNumber));
+        assertEquals(expectedResult, App.getOrderOfElementInIncreasingSequence(previousNumber, currentNumber, previousOrderNumber));
     }
 
 
