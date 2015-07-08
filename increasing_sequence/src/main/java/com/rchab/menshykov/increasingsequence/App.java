@@ -1,10 +1,9 @@
-package com.rchab.menshykov.growingsequence;
+package com.rchab.menshykov.increasingsequence;
 
 /*
-Find the longest number growing sequence in array
+Find the longest number increasing sequence in array
  */
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

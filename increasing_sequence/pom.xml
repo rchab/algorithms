@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>growing_sequence</artifactId>
+    <artifactId>increasing_sequence</artifactId>
 
 
 </project>

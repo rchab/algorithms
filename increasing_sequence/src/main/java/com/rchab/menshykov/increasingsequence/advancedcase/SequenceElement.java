@@ -1,4 +1,4 @@
-package com.rchab.menshykov.growingsequence.advancedcase;
+package com.rchab.menshykov.increasingsequence.advancedcase;
 
 public class SequenceElement {
     private Integer value;

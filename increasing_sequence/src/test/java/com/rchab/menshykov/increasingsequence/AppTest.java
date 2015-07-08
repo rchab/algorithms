@@ -1,4 +1,4 @@
-package com.rchab.menshykov.growingsequence;
+package com.rchab.menshykov.increasingsequence;
 
 import org.junit.Test;
 

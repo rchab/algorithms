@@ -1,4 +1,4 @@
-package com.rchab.menshykov.growingsequence.advancedcase;
+package com.rchab.menshykov.increasingsequence.advancedcase;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

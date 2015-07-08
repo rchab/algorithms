@@ -1,6 +1,6 @@
-package com.rchab.menshykov.growingsequence.advancedcase;
+package com.rchab.menshykov.increasingsequence.advancedcase;
 
-import com.rchab.menshykov.growingsequence.ArrayUtils;
+import com.rchab.menshykov.increasingsequence.ArrayUtils;
 
 
 public class AppAdvanced {
