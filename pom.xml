@@ -10,6 +10,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>increasing_sequence</module>
+        <module>count_words_occurs</module>
+        <module>cloakroom</module>
     </modules>
 
     <dependencies>
